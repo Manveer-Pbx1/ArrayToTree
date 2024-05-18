@@ -1,16 +1,29 @@
-import React from 'react'
+import React from 'react';
+import TreeNode from './TreeNode';
 
-function Tree() {
-  return (
-    <div>
-      {/* draw a binary tree template */}
-      <div className="tree">
-        <span className='root'></span>
-        <span className='node'></span>
-        <span className='node'></span>
-      </div>
-    </div>
-  )
+function buildTree(array, index = 0) {
+  if (index >= array.length || array[index] === 'null') {
+    return null;
+  }
+
+  const node = {
+    value: array[index],
+    left: buildTree(array, 2 * index + 1),
+    right: buildTree(array, 2 * index + 2),
+  };
+
+  return node;
 }
 
-export default Tree
+function Tree({ array }) {
+  const root = buildTree(array);
+
+  return (
+    <div className="tree">
+      {root && <TreeNode {...root} />}
+    </div>
+  );
+}
+
+
+export default Tree;

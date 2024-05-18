@@ -1,13 +1,11 @@
 import React from 'react'
-import Tree from './Components/Tree'
-import Input from './Components/Input'
+import Input from './Components/EditableArray'
 
 function App() {
   return (
     <div>
       Create Tree From Array
       <Input/>
-    <Tree/>
     </div>
   )
 }
